@@ -1,28 +1,26 @@
 'use client'
 
 import katex from 'katex'
-import { ChangeEvent, useEffect, useRef, useState } from 'react'
+import { ChangeEvent, useRef, useState } from 'react'
 import 'katex/dist/katex.min.css'
 
 export const MathInput = ({ inline }: { inline: boolean }) => {
     const [formula, setFormula] = useState<string>('')
     const formulaRef = useRef<HTMLDivElement>(null)
 
-    useEffect(() => {
+    const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        const value = event.target.value
+        setFormula(value)
+
         const formulaElement = formulaRef.current
 
         if (formulaElement == null) {
             return
         }
-        katex.render(formula, formulaElement, {
+        katex.render(value, formulaElement, {
             throwOnError: false,
             displayMode: !inline,
         })
-    }, [formula, inline])
-
-    const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        const value = event.target.value
-        setFormula(value)
     }
 
     return (
