@@ -1,4 +1,3 @@
-import { ColorModeScript, UIProvider } from '@yamada-ui/react'
 import { Inter } from 'next/font/google'
 
 import type { Metadata } from 'next'
@@ -18,11 +17,8 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <html lang="en">
-            <body className={inter.className}>
-                <ColorModeScript />
-                <UIProvider>{children}</UIProvider>
-            </body>
+        <html lang="ja">
+            <body className={inter.className}>{children}</body>
         </html>
     )
 }

@@ -16,7 +16,8 @@
         "analyze": "ANALYZE=true pnpm build"
     },
     "dependencies": {
-        "@yamada-ui/react": "^1.4.5",
+        "html2canvas": "^1.4.1",
+        "katex": "^0.16.11",
         "next": "14.2.3",
         "react": "^18",
         "react-dom": "^18"
@@ -35,6 +36,7 @@
         "@testing-library/jest-dom": "^6.4.5",
         "@testing-library/react": "^15.0.7",
         "@types/jest": "^29.5.12",
+        "@types/katex": "^0.16.7",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
