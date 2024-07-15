@@ -4,7 +4,7 @@ import katex from 'katex'
 import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import 'katex/dist/katex.min.css'
 
-export const MathInput = () => {
+export const MathInput = ({ inline }: { inline: boolean }) => {
     const [formula, setFormula] = useState<string>('')
     const formulaRef = useRef<HTMLDivElement>(null)
 
@@ -16,8 +16,9 @@ export const MathInput = () => {
         }
         katex.render(formula, formulaElement, {
             throwOnError: false,
+            displayMode: !inline,
         })
-    }, [formula])
+    }, [formula, inline])
 
     const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
         const value = event.target.value
@@ -26,7 +27,7 @@ export const MathInput = () => {
 
     return (
         <div className="w-full">
-            <div>
+            <div className="h-14">
                 <span ref={formulaRef} className="inline-block" />
             </div>
 
@@ -34,7 +35,7 @@ export const MathInput = () => {
                 value={formula}
                 onChange={onChange}
                 spellCheck={false}
-                className="textarea textarea-bordered my-5 h-60 w-full"
+                className="textarea textarea-bordered mt-5 h-60 w-full"
                 placeholder="Input formula..."
             />
         </div>
