@@ -2,10 +2,12 @@
 
 import { ChangeEvent, useState } from 'react'
 
-import 'katex/dist/katex.min.css'
 import { Formula } from '../formula'
+type FormulaInputProps = {
+    inline: boolean
+}
 
-export const MathInput = ({ inline }: { inline: boolean }) => {
+export const FormulaInput = ({ inline }: FormulaInputProps) => {
     const [formula, setFormula] = useState<string>('')
 
     const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {

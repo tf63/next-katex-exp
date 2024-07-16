@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { MathInput } from '@/components/math-input'
+import { FormulaInput } from '@/components/formula-input'
 
 export default function Home() {
     return (
@@ -13,14 +13,14 @@ export default function Home() {
             <div className="card  my-8">
                 <p className="font-bold">Inline Formula</p>
                 <div className="my-5 w-full">
-                    <MathInput inline={true} />
+                    <FormulaInput inline={true} />
                 </div>
             </div>
 
             <div className="card my-8">
                 <p className="font-bold">Block Formula</p>
                 <div className="my-5 w-full">
-                    <MathInput inline={false} />
+                    <FormulaInput inline={false} />
                 </div>
             </div>
         </div>
