@@ -1,11 +1,13 @@
 'use client'
 
+// NOT MAINTAINED
+
 import html2canvas from 'html2canvas'
 import katex from 'katex'
 import { useEffect, useRef } from 'react'
 import 'katex/dist/katex.min.css'
 
-export const MathBlock = () => {
+export const FormulaCanvas = () => {
     const formulaRef = useRef<HTMLDivElement>(null)
     const canvasRef = useRef<HTMLCanvasElement>(null)
 
