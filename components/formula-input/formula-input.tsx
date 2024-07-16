@@ -21,7 +21,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
 
     return (
         <div className="w-full">
-            <div className="mx-20 border-b-2 pb-3">
+            <div className="mx-20 border-b-2 pb-1">
                 <Formula ref={elementRef} formula={formula} inline={inline} />
             </div>
             <textarea

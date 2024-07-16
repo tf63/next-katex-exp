@@ -4,7 +4,7 @@ import { CopyBlock } from '../copy-block'
 
 export const NavSidebar = () => {
     return (
-        <div className="bg-grad shadow-grad h-full w-full rounded-md p-7">
+        <div className="bg-grad shadow-grad h-full w-full rounded-xl p-7 text-primary-content">
             <h2 className="mb-5 text-center text-xl font-semibold ">Templates</h2>
             <p className="font-semibold">Environment</p>
             <CopyBlock text="\bm x = \bm a_0 + \bm b_0">
