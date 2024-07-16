@@ -1,16 +1,13 @@
 import React from 'react'
 
-import { FormulaDropdown } from '@/components/formula-dropdown'
 import { MathInput } from '@/components/math-input'
 
 export default function Home() {
     return (
         <div className="w-full">
             <div className="flex items-center">
-                <h1 className=" w-fit  text-2xl font-bold">Next Math</h1>
-                <div className="ml-auto">
-                    <FormulaDropdown />
-                </div>
+                <h1 className="w-fit  text-2xl font-bold">Next Math</h1>
+                <div className="ml-auto">{/* <FormulaDropdown /> */}</div>
             </div>
 
             <div className="card  my-8">

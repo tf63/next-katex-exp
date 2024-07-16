@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google'
 
-import { NavSidebar } from '@/components/layout/nav-sidebar'
+import { cn } from '@/lib/utils'
 
 import type { Metadata } from 'next'
 
@@ -19,13 +19,8 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <html lang="ja" data-theme="emerald">
-            <body className={inter.className}>
-                <div className="flex h-screen gap-10 p-8">
-                    {children}
-                    <NavSidebar />
-                </div>
-            </body>
+        <html lang="ja" data-theme="dark">
+            <body className={cn(inter.className, 'h-screen')}>{children}</body>
         </html>
     )
 }

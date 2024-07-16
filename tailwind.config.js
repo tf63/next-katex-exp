@@ -30,12 +30,6 @@ const config = {
                 },
             },
             'dark',
-            {
-                sunset: {
-                    ...require('daisyui/src/theming/themes')['sunset'],
-                    '--rounded-btn': '0.5rem',
-                },
-            },
         ],
     },
 }
