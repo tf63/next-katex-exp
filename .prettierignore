@@ -26,3 +26,5 @@ package-lock.json
 public/
 *.ico
 *.svg
+
+node_modules/
