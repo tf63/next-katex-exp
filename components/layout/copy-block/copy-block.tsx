@@ -7,13 +7,13 @@ type CopyBlockProps = { text: string; children: ReactElement<Record<string, stri
 export const CopyBlock = ({ text, children }: CopyBlockProps) => {
     const copyFunction = () => {
         navigator.clipboard.writeText(text).catch(() => {
-            console.log('error')
+            console.log('error during copying formura')
         })
     }
 
     return (
-        <div className="tooltip tooltip-bottom tooltip-primary" data-tip="Copy">
-            <button className="btn btn-ghost m-0 h-fit w-fit p-0 hover:bg-transparent" onClick={copyFunction}>
+        <div className="tooltip tooltip-bottom tooltip-primary w-full" data-tip="Copy">
+            <button className="btn btn-ghost m-0 h-full w-full p-0 hover:bg-transparent" onClick={copyFunction}>
                 {children}
             </button>
         </div>
