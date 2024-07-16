@@ -26,10 +26,10 @@ export const FormulaCanvas = () => {
 
     return (
         <div>
-            <div ref={elementRef} className="w-fit text-white">
+            <div ref={elementRef} className="w-fit">
                 <div ref={formulaRef} />
             </div>
-            <button className="btn btn-primary" onClick={saveAsImage}>
+            <button className="btn btn-primary " onClick={saveAsImage}>
                 Save as image
             </button>
         </div>

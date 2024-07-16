@@ -2,6 +2,8 @@
 
 import { ChangeEvent, useState } from 'react'
 
+import { useSaveAsImg } from '@/hooks/use-save-img'
+
 import { Formula } from '../formula'
 type FormulaInputProps = {
     inline: boolean
@@ -10,6 +12,8 @@ type FormulaInputProps = {
 export const FormulaInput = ({ inline }: FormulaInputProps) => {
     const [formula, setFormula] = useState<string>('')
 
+    const { elementRef, saveAsImage } = useSaveAsImg()
+
     const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
         const value = event.target.value
         setFormula(value)
@@ -17,15 +21,20 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
 
     return (
         <div className="w-full">
-            <Formula formula={formula} inline={inline} />
-
+            <div className="mx-20 border-b-2 pb-3">
+                <Formula ref={elementRef} formula={formula} inline={inline} />
+            </div>
             <textarea
                 value={formula}
                 onChange={onChange}
                 spellCheck={false}
-                className="textarea textarea-bordered mt-5 h-60 w-full"
+                className="textarea textarea-bordered mb-3 mt-10 h-60 w-full"
                 placeholder="Input formula..."
             />
+
+            <button className="btn btn-primary" onClick={saveAsImage}>
+                Download
+            </button>
         </div>
     )
 }

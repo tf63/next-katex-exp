@@ -1,6 +1,6 @@
 'use client'
 import katex from 'katex'
-import { useEffect, useRef } from 'react'
+import { Ref, forwardRef, useEffect, useRef } from 'react'
 
 import 'katex/dist/katex.min.css'
 
@@ -9,7 +9,7 @@ type FormulaProps = {
     inline: boolean
 }
 
-export const Formula = ({ formula, inline }: FormulaProps) => {
+const FormulaContent = ({ formula, inline }: FormulaProps, ref: Ref<HTMLDivElement>) => {
     const formulaRef = useRef<HTMLSpanElement>(null)
 
     useEffect(() => {
@@ -24,8 +24,10 @@ export const Formula = ({ formula, inline }: FormulaProps) => {
     }, [formula, inline])
 
     return (
-        <div className="flex h-14 flex-col justify-center">
+        <div ref={ref} className="flex h-14 flex-col justify-center">
             <span ref={formulaRef} className="inline-block" />
         </div>
     )
 }
+
+export const Formula = forwardRef<HTMLDivElement, FormulaProps>(FormulaContent)
