@@ -24,8 +24,10 @@ const FormulaContent = ({ formula, inline }: FormulaProps, ref: Ref<HTMLDivEleme
     }, [formula, inline])
 
     return (
-        <div ref={ref} className="flex h-14 flex-col justify-center">
-            <span ref={formulaRef} className="inline-block" />
+        <div className="mx-auto flex items-center justify-center">
+            <div ref={ref} className="py-auto h-14 w-fit">
+                <span ref={formulaRef} className="inline-block" />
+            </div>
         </div>
     )
 }
