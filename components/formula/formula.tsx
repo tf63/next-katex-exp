@@ -1,3 +1,4 @@
+'use client'
 import katex from 'katex'
 import { useEffect, useRef } from 'react'
 
@@ -23,7 +24,7 @@ export const Formula = ({ formula, inline }: FormulaProps) => {
     }, [formula, inline])
 
     return (
-        <div className="h-14">
+        <div className="flex h-14 flex-col justify-center">
             <span ref={formulaRef} className="inline-block" />
         </div>
     )
