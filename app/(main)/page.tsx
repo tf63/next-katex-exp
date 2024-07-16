@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { FormulaCanvas } from '@/components/formula-canvas'
 import { FormulaInput } from '@/components/formula-input'
 
 export default function Home() {
@@ -23,6 +24,8 @@ export default function Home() {
                     <FormulaInput inline={false} />
                 </div>
             </div>
+
+            <FormulaCanvas />
         </div>
     )
 }
