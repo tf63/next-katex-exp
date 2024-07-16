@@ -1,5 +1,7 @@
 import { Inter } from 'next/font/google'
 
+import { NavSidebar } from '@/components/layout/nav-sidebar'
+
 import type { Metadata } from 'next'
 
 import './globals.css'
@@ -18,7 +20,12 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ja" data-theme="emerald">
-            <body className={inter.className}>{children}</body>
+            <body className={inter.className}>
+                <div className="flex h-screen gap-10 p-8">
+                    {children}
+                    <NavSidebar />
+                </div>
+            </body>
         </html>
     )
 }
