@@ -7,8 +7,7 @@ export default function Home() {
     return (
         <div className="w-full">
             <div className="card flex items-center bg-base-100">
-                <h1 className="w-fit  text-2xl font-bold">Next Math</h1>
-                <div className="ml-auto">{/* <FormulaDropdown /> */}</div>
+                <h1 className="w-fit text-2xl font-bold">Next Math</h1>
             </div>
 
             <div className="card my-8 bg-base-100 p-8 pb-4 shadow-md">

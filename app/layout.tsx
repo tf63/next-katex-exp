@@ -19,7 +19,7 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <html lang="ja" data-theme="emerald">
+        <html lang="ja" data-theme="light">
             <body className={cn(inter.className, 'h-full overflow-hidden bg-base-300 p-5')}>{children}</body>
         </html>
     )

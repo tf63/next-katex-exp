@@ -42,14 +42,16 @@ const config = {
     ],
     daisyui: {
         themes: [
-            'light',
             {
-                emerald: {
-                    ...require('daisyui/src/theming/themes')['emerald'],
+                light: {
+                    ...require('daisyui/src/theming/themes')['light'],
+                    'base-100': '#ffffff',
                     'base-200': '#fcfcfc',
+                    'base-300': '#e4e4e4',
+                    primary: '#DE94FF',
+                    secondary: '#A1B1FF',
                 },
             },
-            'dark',
         ],
     },
 }
