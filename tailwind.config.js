@@ -36,7 +36,7 @@ const config = {
         function ({ addUtilities }) {
             const newUtilities = {
                 '.h-sidebar': {
-                    height: 'calc(100vh - 25px)',
+                    height: 'calc(100vh - 2.5rem)',
                 },
             }
             addUtilities(newUtilities, ['responsive', 'hover'])
