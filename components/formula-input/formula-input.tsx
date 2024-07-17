@@ -35,10 +35,10 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
             />
 
             <div className="flex gap-5">
-                <button className="btn btn-primary shadow-primary" onClick={downloadImage}>
+                <button className="btn btn-primary shadow-primary outline-none" onClick={downloadImage} tabIndex={-1}>
                     Download as Image
                 </button>
-                <button className="btn btn-secondary shadow-secondary" onClick={copyImage}>
+                <button className="btn btn-secondary shadow-secondary outline-none" onClick={copyImage} tabIndex={-1}>
                     Copy as Image
                 </button>
             </div>
