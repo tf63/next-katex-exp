@@ -2,13 +2,20 @@ import download from 'downloadjs'
 import { toBlob, toPng } from 'html-to-image'
 import { RefObject } from 'react'
 
+import { useToast } from '@/hooks/use-toast'
+
 export const useDOMtoImage = (elementRef: RefObject<HTMLElement>, filename = 'tmp.png') => {
+    const { notifyWithPromise } = useToast()
+
     const copyImage = () => {
         if (elementRef.current == null) {
             return
         }
 
-        toBlob(elementRef.current)
+        const _promise = toBlob(elementRef.current)
+        notifyWithPromise('Copied as Image!', _promise)
+
+        _promise
             .then((blob) => {
                 if (blob == null) {
                     return
@@ -27,7 +34,11 @@ export const useDOMtoImage = (elementRef: RefObject<HTMLElement>, filename = 'tm
             return
         }
 
-        toPng(elementRef.current)
+        const _promise = toPng(elementRef.current)
+
+        notifyWithPromise('Downloaded as Image!', _promise)
+
+        _promise
             .then((dataUrl) => {
                 download(dataUrl, filename)
             })
