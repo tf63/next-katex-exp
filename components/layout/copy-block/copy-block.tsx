@@ -13,7 +13,11 @@ export const CopyBlock = ({ text, children }: CopyBlockProps) => {
 
     return (
         <div className="tooltip-neutral tooltip tooltip-bottom w-full before:-mt-3 after:-mt-3" data-tip="Copy">
-            <button className="btn btn-ghost m-0 h-full w-full p-0 hover:bg-transparent" onClick={copyFunction}>
+            <button
+                className="btn btn-ghost m-0 h-full w-full p-0 outline-none hover:bg-transparent"
+                onClick={copyFunction}
+                tabIndex={-1}
+            >
                 {children}
             </button>
         </div>

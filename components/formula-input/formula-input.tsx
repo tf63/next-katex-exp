@@ -1,16 +1,23 @@
 'use client'
 
 import { ChangeEvent, useRef, useState } from 'react'
+import { useColor } from 'react-color-palette'
 
 import { useDOMtoImage } from '@/hooks/use-dom-to-image'
 
+import { ColorPicker } from '@/components/color-picker'
 import { Formula } from '@/components/formula'
+
+import 'react-color-palette/css'
+
 type FormulaInputProps = {
     inline: boolean
 }
 
 export const FormulaInput = ({ inline }: FormulaInputProps) => {
     const [formula, setFormula] = useState<string>('')
+
+    const [color, setColor] = useColor('#000000FF')
 
     const elementRef = useRef<HTMLDivElement>(null)
 
@@ -23,7 +30,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
 
     return (
         <div className="w-full">
-            <div className="mx-20 border-b-2 py-2">
+            <div className="mx-20 border-b-2 py-2" style={{ color: color.hex }}>
                 <Formula ref={elementRef} formula={formula} inline={inline} />
             </div>
             <textarea
@@ -35,12 +42,13 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
             />
 
             <div className="flex gap-5">
-                <button className="btn btn-primary shadow-primary" onClick={downloadImage}>
+                <button className="btn btn-primary shadow-primary outline-none" onClick={downloadImage} tabIndex={-1}>
                     Download as Image
                 </button>
-                <button className="btn btn-secondary shadow-secondary" onClick={copyImage}>
+                <button className="btn btn-secondary shadow-secondary outline-none" onClick={copyImage} tabIndex={-1}>
                     Copy as Image
                 </button>
+                <ColorPicker color={color} setColor={setColor} />
             </div>
         </div>
     )
