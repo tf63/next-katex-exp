@@ -51,12 +51,12 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
                 </button>
 
                 <details className="dropdown dropdown-top" ref={closeRef}>
-                    <summary className="btn min-w-[100px] font-normal shadow-primary hover:bg-base-100/90">
-                        {color.hex}
+                    <summary className="shadow-btn btn min-w-[100px] font-semibold hover:border-transparent hover:bg-base-200">
+                        Text {color.hex}
                     </summary>
-                    <div className="dropdown-content z-auto mb-5 rounded-lg bg-base-100 p-5 shadow-lg">
-                        <div className="space-y-5 [&_.rcp-saturation]:h-[200px] [&_.rcp-saturation]:w-[200px] [&_.rcp-saturation]:rounded-md">
-                            <Saturation height={200} color={color} onChange={setColor} />
+                    <div className="shadow-btn dropdown-content z-50 mb-5 rounded-lg bg-base-200 p-5">
+                        <div className="w-[175px] space-y-5 [&_.rcp-saturation]:rounded-md">
+                            <Saturation height={175} color={color} onChange={setColor} />
                             <Hue color={color} onChange={setColor} />
                             <Alpha color={color} onChange={setColor} />
                         </div>
