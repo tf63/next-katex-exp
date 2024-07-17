@@ -13,7 +13,7 @@ export const useDOMtoImage = (elementRef: RefObject<HTMLElement>, filename = 'tm
         }
 
         const _promise = toBlob(elementRef.current)
-        notifyWithPromise('Copied as Image!', _promise)
+        notifyWithPromise('Copied as Image !', _promise)
 
         _promise
             .then((blob) => {
@@ -36,7 +36,7 @@ export const useDOMtoImage = (elementRef: RefObject<HTMLElement>, filename = 'tm
 
         const _promise = toPng(elementRef.current)
 
-        notifyWithPromise('Downloaded as Image!', _promise)
+        notifyWithPromise('Downloaded as Image !', _promise)
 
         _promise
             .then((dataUrl) => {

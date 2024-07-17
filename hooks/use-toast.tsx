@@ -1,6 +1,9 @@
 import { CircleCheck } from 'lucide-react'
 import toast from 'react-hot-toast'
 
+// リファレンス
+// https://react-hot-toast.com/docs/toast\
+
 export const useToast = () => {
     const notify = (message: string) => {
         toast(message, { position: 'bottom-right', icon: <CircleCheck /> })
@@ -15,7 +18,18 @@ export const useToast = () => {
                     success: () => message,
                     error: () => `Error!`,
                 },
-                { position: 'bottom-right' }
+                {
+                    position: 'bottom-right',
+                    style: {
+                        width: '250px',
+                        boxShadow: '4px 10px 15px rgba(34, 26, 53, 0.1)',
+                        margin: '10px 0px',
+                    },
+                    iconTheme: {
+                        primary: '#A1B1FF',
+                        secondary: '#FFFFFF',
+                    },
+                }
             )
             .catch(() => {
                 console.log('error happend in toast')
