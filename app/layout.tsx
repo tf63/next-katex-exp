@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
+import { ToastProvider } from '@/provider/ToastProvider'
 
 import type { Metadata } from 'next'
 
@@ -20,7 +21,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ja" data-theme="light">
-            <body className={cn(inter.className, 'h-full overflow-hidden bg-base-300 p-5')}>{children}</body>
+            <body className={cn(inter.className, 'h-full overflow-hidden bg-base-300 p-5')}>
+                {children}
+                <ToastProvider />
+            </body>
         </html>
     )
 }
