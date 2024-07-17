@@ -23,14 +23,14 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
 
     return (
         <div className="w-full">
-            <div className="mx-20 border-b-2 pb-1">
+            <div className="mx-20 border-b-2 py-2">
                 <Formula ref={elementRef} formula={formula} inline={inline} />
             </div>
             <textarea
                 value={formula}
                 onChange={onChange}
                 spellCheck={false}
-                className="textarea textarea-bordered mb-8 mt-10 h-60 w-full"
+                className="textarea textarea-bordered mb-7 mt-10 h-60 w-full"
                 placeholder="Input formula..."
             />
 
