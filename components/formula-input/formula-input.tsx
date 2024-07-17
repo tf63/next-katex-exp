@@ -3,6 +3,7 @@
 import { ChangeEvent, useRef, useState } from 'react'
 import { Alpha, Hue, Saturation, useColor } from 'react-color-palette'
 
+import { useCloseRef } from '@/hooks/use-close-ref'
 import { useDOMtoImage } from '@/hooks/use-dom-to-image'
 
 import { Formula } from '@/components/formula'
@@ -15,6 +16,7 @@ type FormulaInputProps = {
 
 export const FormulaInput = ({ inline }: FormulaInputProps) => {
     const [formula, setFormula] = useState<string>('')
+    const { closeRef } = useCloseRef()
 
     const [color, setColor] = useColor('#000000FF')
 
@@ -48,21 +50,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
                     Copy as Image
                 </button>
 
-                {/* <dialog id="color-picker" className="modal">
-                    <div className="modal-box w-fit rounded-lg bg-base-100 shadow-lg">
-                        <div className="w-[100px] space-y-10 [&_.rcp-saturation]:h-[100px] [&_.rcp-saturation]:w-[100px] [&_.rcp-saturation]:rounded-md">
-                            <Saturation height={100} color={color} onChange={setColor} />
-                            <Hue color={color} onChange={setColor} />
-                            <Alpha color={color} onChange={setColor} />
-                        </div>
-                    </div>
-
-                    <form method="dialog" className="modal-backdrop">
-                        <button>close</button>
-                    </form>
-                </dialog> */}
-
-                <details className="dropdown dropdown-top">
+                <details className="dropdown dropdown-top" ref={closeRef}>
                     <summary className="btn min-w-[100px] font-normal shadow-primary hover:bg-base-100/90">
                         {color.hex}
                     </summary>
