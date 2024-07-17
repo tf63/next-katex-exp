@@ -1,10 +1,10 @@
 'use client'
 
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useRef, useState } from 'react'
 
-import { useSaveAsImg } from '@/hooks/use-save-img'
+import { useDOMtoImage } from '@/hooks/use-dom-to-image'
 
-import { Formula } from '../formula'
+import { Formula } from '@/components/formula'
 type FormulaInputProps = {
     inline: boolean
 }
@@ -12,7 +12,9 @@ type FormulaInputProps = {
 export const FormulaInput = ({ inline }: FormulaInputProps) => {
     const [formula, setFormula] = useState<string>('')
 
-    const { elementRef, saveAsImage } = useSaveAsImg()
+    const elementRef = useRef<HTMLDivElement>(null)
+
+    const { downloadImage, copyImage } = useDOMtoImage(elementRef)
 
     const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
         const value = event.target.value
@@ -28,13 +30,18 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
                 value={formula}
                 onChange={onChange}
                 spellCheck={false}
-                className="textarea textarea-bordered mb-3 mt-10 h-60 w-full"
+                className="textarea textarea-bordered mb-8 mt-10 h-60 w-full"
                 placeholder="Input formula..."
             />
 
-            <button className="btn btn-primary" onClick={saveAsImage}>
-                Download
-            </button>
+            <div className="flex gap-5">
+                <button className="btn btn-primary shadow-primary" onClick={downloadImage}>
+                    Download as Image
+                </button>
+                <button className="btn btn-secondary shadow-secondary" onClick={copyImage}>
+                    Copy as Image
+                </button>
+            </div>
         </div>
     )
 }

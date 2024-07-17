@@ -10,7 +10,7 @@ export default function Home() {
             </div>
 
             <div className="card my-8 bg-base-100 p-8 pb-4 shadow-md">
-                <p className="font-bold">Inline Formula</p>
+                <p className="font-bold">Katex Block</p>
                 <div className="my-5 w-full">
                     <FormulaInput inline={false} />
                 </div>

@@ -12,6 +12,7 @@ package-lock.json
 *.spec.*
 *.test.*
 
+node_modules/
 
 # build dir
 build/
