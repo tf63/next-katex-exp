@@ -47,10 +47,10 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
 
     return (
         <div>
-            <div className="card mx-auto mb-12 mt-8 max-w-[960px] bg-base-100 p-8 pb-12 shadow-md">
+            <div className="card mx-auto mb-12 mt-8 max-w-[900px] bg-base-100 p-8 pb-12 shadow-md">
                 <p className="font-bold">Katex Block</p>
                 <div className="w-full">
-                    <div className="mx-20 border-b-2 py-2">
+                    <div className="mx-20 overflow-hidden border-b-2 py-2">
                         <Formula formula={formula} inline={inline} />
                     </div>
                     <textarea
@@ -84,13 +84,13 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
 
             <div
                 className={cn(
-                    'card mx-auto h-44 max-w-[960px] p-8 2xl:h-80',
+                    'card mx-auto h-44 max-w-[900px] p-8 2xl:h-80',
                     isColorLight(color.hex) ? 'shadow-dark bg-zinc-500 text-zinc-200' : 'shadow-md'
                 )}
             >
                 <p className="font-bold">Preview</p>
                 <div
-                    className={cn('overflow-scroll')}
+                    className={cn('mt-2 overflow-scroll')}
                     style={{
                         color: color.hex,
                         fontSize: fontSize,
