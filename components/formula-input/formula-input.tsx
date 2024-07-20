@@ -51,9 +51,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
                     Copy as Image
                 </button>
                 <ColorPicker color={color} setColor={setColor} />
-                <div className="flex w-60 items-center">
-                    <FontSizeSlider fontSize={fontSize} setFontSize={setFontSize} />
-                </div>
+                <FontSizeSlider fontSize={fontSize} setFontSize={setFontSize} />
             </div>
         </div>
     )
