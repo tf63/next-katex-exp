@@ -9,10 +9,7 @@ export default function Home() {
                 <h1 className="w-fit text-2xl font-bold">Next Math</h1>
             </div>
 
-            <div className="card my-8 bg-base-100 p-8 pb-12 shadow-md">
-                <p className="font-bold">Katex Block</p>
-                <FormulaInput inline={false} />
-            </div>
+            <FormulaInput inline={false} />
         </div>
     )
 }
