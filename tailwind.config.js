@@ -12,9 +12,10 @@ const config = {
                 grad: 'linear-gradient(315deg, #DE94FF 0%, #A1B1FF 100%)',
             },
             boxShadow: {
-                sm: '4px 10px 40px rgba(34, 26, 53, 0.05)',
-                md: '4px 10px 40px rgba(34, 26, 53, 0.06)',
-                lg: '4px 10px 40px rgba(34, 26, 53, 0.07)',
+                sm: '4px 10px 20px rgba(34, 26, 53, 0.05)',
+                md: '4px 10px 20px rgba(34, 26, 53, 0.1)',
+                lg: '4px 10px 20px rgba(34, 26, 53, 0.2)',
+                dark: '4px 10px 20px rgba(34, 26, 53, 0.4)',
                 grad: '8px 12px 15px rgba(219, 150, 255, 0.4)',
                 primary: '1px 4px 15px rgba(219, 150, 255, 0.4)',
                 secondary: '1px 4px 15px rgba(161, 177, 255, 0.4)',
