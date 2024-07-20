@@ -39,7 +39,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
                 value={formula}
                 onChange={onChange}
                 spellCheck={false}
-                className="textarea textarea-bordered mb-7 mt-10 h-60 w-full"
+                className="textarea textarea-bordered mx-auto mb-7 mt-10 h-40 w-full 2xl:h-80"
                 placeholder="Input formula..."
             />
 
