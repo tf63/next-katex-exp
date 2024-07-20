@@ -1,14 +1,16 @@
 'use client'
 import { ReactElement } from 'react'
 
+import { useToast } from '@/hooks/use-toast'
+
 type CopyBlockProps = { text: string; children: ReactElement<Record<string, string>> }
 
 // TODO: textがchildrenのtextと一致していないので良くない実装，だが保留
 export const CopyBlock = ({ text, children }: CopyBlockProps) => {
+    const { notifyWithPromise } = useToast()
+
     const copyFunction = () => {
-        navigator.clipboard.writeText(text).catch(() => {
-            console.log('error during copying formura')
-        })
+        notifyWithPromise('Copied Template !', navigator.clipboard.writeText(text))
     }
 
     return (
