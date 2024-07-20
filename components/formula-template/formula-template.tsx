@@ -5,7 +5,7 @@ export const FormulaTemplate = ({ template }: { template: Template }) => {
     const { formula } = template
 
     return (
-        <CopyBlock text={formula}>
+        <CopyBlock template={template}>
             <div className="relative w-full">
                 <div className="absolute right-2 top-0 rounded-md bg-slate-600 bg-opacity-15 px-1 py-0.5 text-[10px]">
                     {template.kbd}

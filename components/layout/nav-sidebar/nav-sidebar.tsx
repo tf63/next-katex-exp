@@ -42,8 +42,8 @@ const FormulaTemplates = ({ templates }: { templates: Template[] }) => {
     const { notifyWithPromise } = useToast()
 
     const copyFunction = useCallback(
-        (text: string) => {
-            notifyWithPromise('Copied Template !', navigator.clipboard.writeText(text))
+        (text: string, message: string) => {
+            notifyWithPromise(message, navigator.clipboard.writeText(text))
         },
         [notifyWithPromise]
     )
@@ -56,7 +56,7 @@ const FormulaTemplates = ({ templates }: { templates: Template[] }) => {
 
                 for (const template of templates) {
                     if (e.key === template.kbd) {
-                        copyFunction(template.formula)
+                        copyFunction(template.formula, `Copied Template #${template.kbd}`)
                         break
                     }
                 }
