@@ -1,3 +1,8 @@
+'use client'
+import { useCallback, useEffect } from 'react'
+
+import { useToast } from '@/hooks/use-toast'
+
 import { FormulaTemplate } from '@/components/formula-template'
 
 const layoutTemplates: Template[] = [
@@ -31,41 +36,93 @@ const annotationTemplates: Template[] = [
     { type: 'annotation', kbd: '0', formula: 'x = \\overbrace{a + b + c}^{\\text{note}}' },
 ]
 
-const FormulaTemplates = ({ templates }: { templates: Template[] }) => {
-    return (
-        <div className="grid grid-cols-2 gap-1">
-            {templates.map((template, index) => (
-                <FormulaTemplate key={index} template={template} />
-            ))}
-        </div>
-    )
-}
+const templates: Template[] = [...layoutTemplates, ...caseTemplates, ...alignTemplates, ...annotationTemplates]
 
-export const NavSidebar = () => {
+const FormulaTemplates = ({ templates }: { templates: Template[] }) => {
+    const { notifyWithPromise } = useToast()
+
+    const copyFunction = useCallback(
+        (text: string) => {
+            notifyWithPromise('Copied Template !', navigator.clipboard.writeText(text))
+        },
+        [notifyWithPromise]
+    )
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.ctrlKey) {
+                // ここでpreventDefaultしないとinput要素への入力も受け付けなくなる
+                e.preventDefault()
+
+                for (const template of templates) {
+                    if (e.key === template.kbd) {
+                        copyFunction(template.formula)
+                        break
+                    }
+                }
+            }
+        }
+
+        window.addEventListener('keydown', handleKeyDown)
+
+        return () => window.removeEventListener('keydown', handleKeyDown)
+    }, [copyFunction, templates])
+
     return (
-        <div className="h-full w-full overflow-scroll rounded-xl bg-grad p-6 pl-10 text-primary-content shadow-grad">
-            <h2 className="mb-5 text-center text-xl font-semibold ">Templates</h2>
+        <>
+            {/* 各テンプレートのコンテナは共通化したくなったらする */}
 
             {/* Layout Templates */}
             <p className="font-semibold">Layout</p>
-            <FormulaTemplates templates={layoutTemplates} />
-            {caseTemplates.map((template, index) => (
-                <FormulaTemplate key={index} template={template} />
-            ))}
+            <div className="grid grid-cols-2 gap-1">
+                {layoutTemplates.map((template, index) => (
+                    <FormulaTemplate key={index} template={template} />
+                ))}
+            </div>
+
+            <div className="divider mb-2 mt-0 opacity-70" />
+
+            {/* Case Templates */}
+            <p className="font-semibold">Case</p>
+            <div className="grid grid-cols-1 gap-1">
+                {caseTemplates.map((template, index) => (
+                    <FormulaTemplate key={index} template={template} />
+                ))}
+            </div>
 
             <div className="divider mb-2 mt-0 opacity-70" />
 
             {/* Align Templates */}
             <p className="font-semibold">Align</p>
-            {alignTemplates.map((template, index) => (
-                <FormulaTemplate key={index} template={template} />
-            ))}
+            <div className="grid grid-cols-1 gap-1">
+                {alignTemplates.map((template, index) => (
+                    <FormulaTemplate key={index} template={template} />
+                ))}
+            </div>
 
             <div className="divider mb-2 mt-0 opacity-70" />
 
             {/* Annotation Templates */}
             <p className="font-semibold">Annotation</p>
-            <FormulaTemplates templates={annotationTemplates} />
+            <div className="grid grid-cols-2 gap-1">
+                {annotationTemplates.map((template, index) => (
+                    <FormulaTemplate key={index} template={template} />
+                ))}
+            </div>
+        </>
+    )
+}
+
+// SCにしたいが面倒なので保留
+export const NavSidebar = () => {
+    return (
+        <div className="h-full w-full overflow-scroll rounded-xl bg-grad p-6 pl-10 text-primary-content shadow-grad">
+            <h2 className="mb-2 text-center text-xl font-semibold ">Templates</h2>
+            <p className="mb-4 flex items-center justify-center text-xs">
+                Press <span className="mx-2 rounded-md bg-slate-600 bg-opacity-15 px-1 py-0.5">Ctrl+Num</span> to Copy
+            </p>
+
+            <FormulaTemplates templates={templates} />
         </div>
     )
 }
