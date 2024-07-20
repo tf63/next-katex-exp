@@ -6,6 +6,7 @@ import { useColor } from 'react-color-palette'
 import { useDOMtoImage } from '@/hooks/use-dom-to-image'
 
 import { ColorPicker } from '@/components/color-picker'
+import { FontSizeSlider } from '@/components/font-size-slider'
 import { Formula } from '@/components/formula'
 
 import 'react-color-palette/css'
@@ -18,6 +19,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
     const [formula, setFormula] = useState<string>('')
 
     const [color, setColor] = useColor('#000000FF')
+    const [fontSize, setFontSize] = useState<number>(16)
 
     const elementRef = useRef<HTMLDivElement>(null)
 
@@ -30,7 +32,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
 
     return (
         <div className="w-full">
-            <div className="mx-20 border-b-2 py-2" style={{ color: color.hex }}>
+            <div className="mx-20 border-b-2 py-2" style={{ color: color.hex, fontSize: fontSize }}>
                 <Formula ref={elementRef} formula={formula} inline={inline} />
             </div>
             <textarea
@@ -49,6 +51,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
                     Copy as Image
                 </button>
                 <ColorPicker color={color} setColor={setColor} />
+                <FontSizeSlider fontSize={fontSize} setFontSize={setFontSize} />
             </div>
         </div>
     )
