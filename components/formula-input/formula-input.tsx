@@ -43,7 +43,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
                 placeholder="Input formula..."
             />
 
-            <div className="flex gap-5">
+            <div className="flex flex-wrap gap-5 space-y-0">
                 <button className="btn btn-primary shadow-primary outline-none" onClick={downloadImage} tabIndex={-1}>
                     Download as Image
                 </button>
