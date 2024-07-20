@@ -1,17 +1,17 @@
 'use client'
-import { ReactElement } from 'react'
+import { ReactNode, useCallback } from 'react'
 
 import { useToast } from '@/hooks/use-toast'
 
-type CopyBlockProps = { text: string; children: ReactElement<Record<string, string>> }
+type CopyBlockProps = { text: string; children: ReactNode }
 
 // TODO: textがchildrenのtextと一致していないので良くない実装，だが保留
 export const CopyBlock = ({ text, children }: CopyBlockProps) => {
     const { notifyWithPromise } = useToast()
 
-    const copyFunction = () => {
+    const copyFunction = useCallback(() => {
         notifyWithPromise('Copied Template !', navigator.clipboard.writeText(text))
-    }
+    }, [text, notifyWithPromise])
 
     return (
         <div className="tooltip-neutral tooltip tooltip-bottom w-full before:-mt-3 after:-mt-3" data-tip="Copy">
