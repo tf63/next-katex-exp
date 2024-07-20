@@ -14,7 +14,7 @@ export const FontSizeSlider = ({ fontSize, setFontSize }: FontSizeSliderProps) =
 
     return (
         <Dropdown summary={`Font Size: ${fontSize}`}>
-            <input className="range" type="range" min="0" max="150" value={fontSize} onChange={handleChange} />
+            <input className="range" type="range" min="0" max="100" value={fontSize} onChange={handleChange} />
         </Dropdown>
     )
 }
