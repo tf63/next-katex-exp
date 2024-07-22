@@ -6,7 +6,7 @@ import { useColor } from 'react-color-palette'
 import { useDOMtoImage } from '@/hooks/use-dom-to-image'
 
 import { ColorPicker } from '@/components/color-picker'
-import { FontSizeSlider } from '@/components/font-size-slider'
+import { FontSizeDropdown } from '@/components/font-size-dropdown'
 import { Formula } from '@/components/formula'
 
 import 'react-color-palette/css'
@@ -34,7 +34,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
     const [formula, setFormula] = useState<string>('')
 
     const [color, setColor] = useColor('#000000FF')
-    const [fontSize, setFontSize] = useState<number>(16)
+    const [fontSize, setFontSize] = useState<string>('16px')
 
     const elementRef = useRef<HTMLDivElement>(null)
 
@@ -47,7 +47,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
 
     return (
         <div>
-            <div className="card mx-auto mb-12 mt-8 max-w-[900px] bg-base-100 p-8 pb-12 shadow-md">
+            <div className="card mx-auto mb-12 mt-6 max-w-[900px] bg-base-100 p-8 pb-10 shadow-md">
                 <p className="font-bold">Katex Block</p>
                 <div className="w-full">
                     <div className="mx-20 overflow-hidden border-b-2 py-2">
@@ -77,7 +77,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
                             Copy as Image
                         </button>
                         <ColorPicker color={color} setColor={setColor} />
-                        <FontSizeSlider fontSize={fontSize} setFontSize={setFontSize} />
+                        <FontSizeDropdown fontSize={fontSize} setFontSize={setFontSize} />
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
             >
                 <p className="font-bold">Preview</p>
                 <div
-                    className={cn('mt-2 overflow-x-scroll')}
+                    className="mt-2 overflow-x-scroll"
                     style={{
                         color: color.hex,
                         fontSize: fontSize,
