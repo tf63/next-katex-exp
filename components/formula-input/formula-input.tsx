@@ -47,7 +47,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
 
     return (
         <div>
-            <div className="card mx-auto mb-12 mt-8 max-w-[900px] bg-base-100 p-8 pb-12 shadow-md">
+            <div className="card mx-auto mb-12 mt-6 max-w-[900px] bg-base-100 p-8 pb-10 shadow-md">
                 <p className="font-bold">Katex Block</p>
                 <div className="w-full">
                     <div className="mx-20 overflow-hidden border-b-2 py-2">
@@ -90,7 +90,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
             >
                 <p className="font-bold">Preview</p>
                 <div
-                    className={cn('mt-2 overflow-x-scroll')}
+                    className="mt-2 overflow-x-scroll"
                     style={{
                         color: color.hex,
                         fontSize: fontSize,
