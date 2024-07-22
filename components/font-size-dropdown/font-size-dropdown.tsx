@@ -3,28 +3,27 @@
 import { useCloseRef } from '@/hooks/use-close-ref'
 
 type FontSizeDropdownProps = {
-    summary: string
-    fontSize: number
-    setFontSize: (fontSize: number) => void
+    fontSize: string
+    setFontSize: (fontSize: string) => void
 }
 
-export const FontSizeDropdown = ({ summary, fontSize, setFontSize }: FontSizeDropdownProps) => {
+export const FontSizeDropdown = ({ fontSize, setFontSize }: FontSizeDropdownProps) => {
     const { closeRef } = useCloseRef()
     return (
         <details className="dropdown dropdown-top" ref={closeRef}>
-            <summary className="btn min-w-[160px] font-semibold shadow-btn hover:border-transparent hover:bg-base-200">
-                {summary}
+            <summary className="btn min-w-[140px] font-semibold shadow-btn hover:border-transparent hover:bg-base-200">
+                FontSize {fontSize}
             </summary>
 
-            <ul className="dropdown-content z-50 mb-5 w-60 items-center justify-center rounded-lg bg-base-200 shadow-btn">
+            <ul className="dropdown-content z-50 mb-5 w-32 items-center justify-center rounded-lg bg-base-200 shadow-btn">
                 <li>
                     <input
                         type="radio"
                         name="fontsize-dropdown"
-                        aria-label="item1"
-                        value="item1"
+                        aria-label="16px"
+                        value="16px"
                         className="btn w-full justify-start"
-                        onChange={() => console.log('item1')}
+                        onChange={(event) => setFontSize(event.target.value)}
                         defaultChecked
                     />
                 </li>
@@ -32,30 +31,30 @@ export const FontSizeDropdown = ({ summary, fontSize, setFontSize }: FontSizeDro
                     <input
                         type="radio"
                         name="fontsize-dropdown"
-                        aria-label="item2"
-                        value="item2"
+                        aria-label="32px"
+                        value="32px"
                         className="btn w-full justify-start"
-                        onChange={() => console.log('item2')}
+                        onChange={(event) => setFontSize(event.target.value)}
                     />
                 </li>
                 <li>
                     <input
                         type="radio"
                         name="fontsize-dropdown"
-                        aria-label="item3"
-                        value="item3"
+                        aria-label="48px"
+                        value="48px"
                         className="btn w-full justify-start"
-                        onChange={() => console.log('item3')}
+                        onChange={(event) => setFontSize(event.target.value)}
                     />
                 </li>
                 <li>
                     <input
                         type="radio"
                         name="fontsize-dropdown"
-                        aria-label="item4"
-                        value="item4"
+                        aria-label="64px"
+                        value="64px"
                         className="btn w-full justify-start"
-                        onChange={() => console.log('item4')}
+                        onChange={(event) => setFontSize(event.target.value)}
                     />
                 </li>
             </ul>

@@ -6,7 +6,7 @@ import { useColor } from 'react-color-palette'
 import { useDOMtoImage } from '@/hooks/use-dom-to-image'
 
 import { ColorPicker } from '@/components/color-picker'
-import { FontSizeSlider } from '@/components/font-size-slider'
+import { FontSizeDropdown } from '@/components/font-size-dropdown'
 import { Formula } from '@/components/formula'
 
 import 'react-color-palette/css'
@@ -34,7 +34,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
     const [formula, setFormula] = useState<string>('')
 
     const [color, setColor] = useColor('#000000FF')
-    const [fontSize, setFontSize] = useState<number>(16)
+    const [fontSize, setFontSize] = useState<string>('16px')
 
     const elementRef = useRef<HTMLDivElement>(null)
 
@@ -77,7 +77,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
                             Copy as Image
                         </button>
                         <ColorPicker color={color} setColor={setColor} />
-                        <FontSizeSlider fontSize={fontSize} setFontSize={setFontSize} />
+                        <FontSizeDropdown fontSize={fontSize} setFontSize={setFontSize} />
                     </div>
                 </div>
             </div>

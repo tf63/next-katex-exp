@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { FontSizeDropdown } from './font-size-dropdown'
 
 import type { Meta, StoryObj } from '@storybook/react'
@@ -9,10 +11,16 @@ export default {
     component: FontSizeDropdown,
 } satisfies Meta<FontSizeDropdownType>
 
-export const Default: StoryObj<FontSizeDropdownType> = {
-    render: () => (
+const FontSizeDropdownWithState = () => {
+    const [fontSize, setFontSize] = useState('medium')
+
+    return (
         <div className="flex h-screen w-full items-center justify-center">
-            <FontSizeDropdown summary="default" />
+            <FontSizeDropdown fontSize={fontSize} setFontSize={setFontSize} />
         </div>
-    ),
+    )
+}
+
+export const Default: StoryObj<FontSizeDropdownType> = {
+    render: () => <FontSizeDropdownWithState />,
 }
