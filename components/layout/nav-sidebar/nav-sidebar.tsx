@@ -1,4 +1,5 @@
 'use client'
+
 import { useCallback, useEffect } from 'react'
 
 import { useToast } from '@/hooks/use-toast'
@@ -37,7 +38,7 @@ const annotationTemplates: Template[] = [
 
 const templates: Template[] = [...layoutTemplates, ...caseTemplates, ...alignTemplates, ...annotationTemplates]
 
-const FormulaTemplates = ({ templates }: { templates: Template[] }) => {
+const FormulaTemplates = () => {
     const { notifyWithPromise } = useToast()
 
     const copyFunction = useCallback(
@@ -53,11 +54,9 @@ const FormulaTemplates = ({ templates }: { templates: Template[] }) => {
                 // ここでpreventDefaultしないとinput要素への入力も受け付けなくなる
                 e.preventDefault()
 
-                for (const template of templates) {
-                    if (e.key === template.kbd) {
-                        copyFunction(template.formula, `Copied Template #${template.kbd}`)
-                        break
-                    }
+                const template = templates.find((t) => e.key === t.kbd)
+                if (template) {
+                    copyFunction(template.formula, `Copied Template #${template.kbd}`)
                 }
             }
         }
@@ -65,7 +64,7 @@ const FormulaTemplates = ({ templates }: { templates: Template[] }) => {
         window.addEventListener('keydown', handleKeyDown)
 
         return () => window.removeEventListener('keydown', handleKeyDown)
-    }, [copyFunction, templates])
+    }, [copyFunction])
 
     return (
         <>
@@ -74,8 +73,8 @@ const FormulaTemplates = ({ templates }: { templates: Template[] }) => {
             {/* Layout Templates */}
             <p className="font-semibold">Layout</p>
             <div className="grid grid-cols-2 gap-1">
-                {layoutTemplates.map((template, index) => (
-                    <FormulaTemplate key={index} template={template} />
+                {layoutTemplates.map((template) => (
+                    <FormulaTemplate key={template.kbd} template={template} />
                 ))}
             </div>
 
@@ -84,8 +83,8 @@ const FormulaTemplates = ({ templates }: { templates: Template[] }) => {
             {/* Case Templates */}
             <p className="font-semibold">Case</p>
             <div className="grid grid-cols-1 gap-1">
-                {caseTemplates.map((template, index) => (
-                    <FormulaTemplate key={index} template={template} />
+                {caseTemplates.map((template) => (
+                    <FormulaTemplate key={template.kbd} template={template} />
                 ))}
             </div>
 
@@ -94,8 +93,8 @@ const FormulaTemplates = ({ templates }: { templates: Template[] }) => {
             {/* Align Templates */}
             <p className="font-semibold">Align</p>
             <div className="grid grid-cols-1 gap-1">
-                {alignTemplates.map((template, index) => (
-                    <FormulaTemplate key={index} template={template} />
+                {alignTemplates.map((template) => (
+                    <FormulaTemplate key={template.kbd} template={template} />
                 ))}
             </div>
 
@@ -104,8 +103,8 @@ const FormulaTemplates = ({ templates }: { templates: Template[] }) => {
             {/* Annotation Templates */}
             <p className="font-semibold">Annotation</p>
             <div className="grid grid-cols-2 gap-1">
-                {annotationTemplates.map((template, index) => (
-                    <FormulaTemplate key={index} template={template} />
+                {annotationTemplates.map((template) => (
+                    <FormulaTemplate key={template.kbd} template={template} />
                 ))}
             </div>
         </>
@@ -113,15 +112,13 @@ const FormulaTemplates = ({ templates }: { templates: Template[] }) => {
 }
 
 // SCにしたいが面倒なので保留
-export const NavSidebar = () => {
-    return (
-        <div className="h-full w-full overflow-scroll rounded-xl bg-grad p-6 pl-10 text-primary-content shadow-grad">
-            <h2 className="mb-2 text-center text-xl font-semibold ">Templates</h2>
-            <p className="mb-4 flex items-center justify-center text-xs">
-                Press <span className="mx-2 rounded-md bg-slate-600 bg-opacity-15 px-1 py-0.5">Ctrl+Num</span> to Copy
-            </p>
+export const NavSidebar = () => (
+    <div className="h-full w-full overflow-scroll rounded-xl bg-grad p-6 pl-10 text-primary-content shadow-grad">
+        <h2 className="mb-2 text-center text-xl font-semibold">Templates</h2>
+        <p className="mb-4 flex items-center justify-center text-xs">
+            Press <span className="mx-2 rounded-md bg-slate-600 bg-opacity-15 px-1 py-0.5">Ctrl+Num</span> to Copy
+        </p>
 
-            <FormulaTemplates templates={templates} />
-        </div>
-    )
-}
+        <FormulaTemplates />
+    </div>
+)

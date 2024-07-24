@@ -43,7 +43,7 @@ export const Loading: StoryObj<ButtonToastType> = {
     )
 }
 
-export const Error: StoryObj<ButtonToastType> = {
+export const Failed: StoryObj<ButtonToastType> = {
     render: () => (
         <div>
             <ToastProvider />
@@ -51,7 +51,7 @@ export const Error: StoryObj<ButtonToastType> = {
                 text="error"
                 onClick={() => {
                     const { notifyWithPromise } = useToast()
-                    notifyWithPromise('Error!', Promise.reject('Error'))
+                    notifyWithPromise('Error!', Promise.reject(new Error('Error')))
                 }}
             />
         </div>

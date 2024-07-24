@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
-import { Alpha, Hue, Saturation } from 'react-color-palette'
-import { IColor } from 'react-color-palette'
+import { Alpha, Hue, Saturation, IColor } from 'react-color-palette'
 
 import { Dropdown } from '@/components/dropdown'
 
@@ -9,14 +8,12 @@ type ColorPickerProps = {
     setColor: Dispatch<SetStateAction<IColor>>
 }
 
-export const ColorPicker = ({ color, setColor }: ColorPickerProps) => {
-    return (
-        <Dropdown summary={`Text ${color.hex}`}>
-            <div className="w-[175px] space-y-5 [&_.rcp-saturation]:rounded-md">
-                <Saturation height={175} color={color} onChange={setColor} />
-                <Hue color={color} onChange={setColor} />
-                <Alpha color={color} onChange={setColor} />
-            </div>
-        </Dropdown>
-    )
-}
+export const ColorPicker = ({ color, setColor }: ColorPickerProps) => (
+    <Dropdown summary={`Text ${color.hex}`}>
+        <div className="w-[175px] space-y-5 [&_.rcp-saturation]:rounded-md">
+            <Saturation height={175} color={color} onChange={setColor} />
+            <Hue color={color} onChange={setColor} />
+            <Alpha color={color} onChange={setColor} />
+        </div>
+    </Dropdown>
+)

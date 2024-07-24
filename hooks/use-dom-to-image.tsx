@@ -1,8 +1,12 @@
+'use client'
+
 import download from 'downloadjs'
 import { toBlob, toPng } from 'html-to-image'
 import { RefObject } from 'react'
 
 import { useToast } from '@/hooks/use-toast'
+
+import { Console } from '@/lib/logger'
 
 export const useDOMtoImage = (elementRef: RefObject<HTMLElement>, filename = 'tmp.png') => {
     const { notifyWithPromise } = useToast()
@@ -12,23 +16,23 @@ export const useDOMtoImage = (elementRef: RefObject<HTMLElement>, filename = 'tm
             return
         }
 
-        const _promise = toBlob(elementRef.current, {
+        const blobPromise = toBlob(elementRef.current, {
             width: elementRef.current.offsetWidth,
             height: elementRef.current.offsetHeight
         })
-        notifyWithPromise('Copied as Image !', _promise)
+        notifyWithPromise('Copied as Image !', blobPromise)
 
-        _promise
+        blobPromise
             .then((blob) => {
                 if (blob == null) {
                     return
                 }
                 navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })]).catch((error) => {
-                    console.log('error during copying image', error)
+                    Console.log(`error during copying image: ${error}`)
                 })
             })
-            .catch(() => {
-                console.log('error during saving image')
+            .catch((error) => {
+                Console.log(`error during saving image: ${error}`)
             })
     }
 
@@ -37,19 +41,19 @@ export const useDOMtoImage = (elementRef: RefObject<HTMLElement>, filename = 'tm
             return
         }
 
-        const _promise = toPng(elementRef.current, {
+        const pngPromise = toPng(elementRef.current, {
             width: elementRef.current.offsetWidth,
             height: elementRef.current.offsetHeight
         })
 
-        notifyWithPromise('Downloaded as Image !', _promise)
+        notifyWithPromise('Downloaded as Image !', pngPromise)
 
-        _promise
+        pngPromise
             .then((dataUrl) => {
                 download(dataUrl, filename)
             })
-            .catch(() => {
-                console.log('error during saving image')
+            .catch((error) => {
+                Console.log(`error during saving image: ${error}`)
             })
     }
 

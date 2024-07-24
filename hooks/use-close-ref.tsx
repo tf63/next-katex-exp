@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useRef } from 'react'
 
 export const useCloseRef = () => {
@@ -10,7 +12,7 @@ export const useCloseRef = () => {
             }
 
             if (event.target instanceof Node && !closeRef.current.contains(event.target)) {
-                if (closeRef.current && closeRef.current.open) {
+                if (closeRef.current.open) {
                     closeRef.current.open = false
                 }
             }

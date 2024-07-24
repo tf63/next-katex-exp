@@ -9,7 +9,7 @@ type FontSizeSliderProps = {
 
 export const FontSizeSlider = ({ fontSize, setFontSize }: FontSizeSliderProps) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFontSize(parseInt(e.target.value))
+        setFontSize(parseInt(e.target.value, 10))
     }
 
     return (

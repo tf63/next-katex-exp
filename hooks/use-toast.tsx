@@ -1,5 +1,9 @@
+'use client'
+
 import { CircleCheck } from 'lucide-react'
 import toast from 'react-hot-toast'
+
+import { Console } from '@/lib/logger'
 
 // リファレンス
 // https://react-hot-toast.com/docs/toast\
@@ -31,8 +35,8 @@ export const useToast = () => {
                     }
                 }
             )
-            .catch(() => {
-                console.log('error happend in toast')
+            .catch((error) => {
+                Console.log(`error happend in toast: ${error}`)
             })
     }
 

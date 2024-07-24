@@ -1,4 +1,5 @@
 'use client'
+
 import katex from 'katex'
 import { Ref, forwardRef, useEffect, useRef } from 'react'
 

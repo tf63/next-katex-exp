@@ -16,8 +16,8 @@ type FormulaInputProps = {
     inline: boolean
 }
 
-const isColorLight = (hexColor: string) => {
-    hexColor = hexColor.replace('#', '')
+const isColorLight = (color: string) => {
+    const hexColor = color.replace('#', '')
 
     const r = parseInt(hexColor.substring(0, 2), 16)
     const g = parseInt(hexColor.substring(2, 4), 16)
@@ -41,7 +41,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
     const { downloadImage, copyImage } = useDOMtoImage(elementRef)
 
     const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        const value = event.target.value
+        const { value } = event.target
         setFormula(value)
     }
 
@@ -93,7 +93,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
                     className="mt-2 overflow-x-scroll"
                     style={{
                         color: color.hex,
-                        fontSize: fontSize
+                        fontSize
                     }}
                 >
                     <Formula ref={elementRef} formula={formula} inline={inline} />
