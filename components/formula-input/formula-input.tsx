@@ -85,7 +85,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
             <div
                 className={cn(
                     'card mx-auto h-fit min-h-44 max-w-[900px] p-8 2xl:min-h-80',
-                    isColorLight(color.hex) ? 'shadow-dark bg-zinc-500 text-zinc-200' : 'shadow-md'
+                    isColorLight(color.hex) ? 'bg-zinc-500 text-zinc-200 shadow-dark' : 'shadow-md'
                 )}
             >
                 <p className="font-bold">Preview</p>
@@ -93,7 +93,7 @@ export const FormulaInput = ({ inline }: FormulaInputProps) => {
                     className="mt-2 overflow-x-scroll"
                     style={{
                         color: color.hex,
-                        fontSize: fontSize,
+                        fontSize: fontSize
                     }}
                 >
                     <Formula ref={elementRef} formula={formula} inline={inline} />

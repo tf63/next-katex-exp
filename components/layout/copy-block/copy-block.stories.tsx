@@ -6,9 +6,9 @@ type CopyBlockType = typeof CopyBlock
 
 export default {
     title: 'CopyBlock',
-    component: CopyBlock,
+    component: CopyBlock
 } satisfies Meta<CopyBlockType>
 
 export const Default: StoryObj<CopyBlockType> = {
-    render: () => <CopyBlock />,
+    render: () => <CopyBlock />
 }

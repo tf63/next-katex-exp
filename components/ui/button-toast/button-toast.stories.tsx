@@ -10,7 +10,7 @@ type ButtonToastType = typeof ButtonToast
 
 export default {
     title: 'ButtonToast',
-    component: ButtonToast,
+    component: ButtonToast
 } satisfies Meta<ButtonToastType>
 
 export const Default: StoryObj<ButtonToastType> = {
@@ -25,7 +25,7 @@ export const Default: StoryObj<ButtonToastType> = {
                 }}
             />
         </div>
-    ),
+    )
 }
 
 export const Loading: StoryObj<ButtonToastType> = {
@@ -40,7 +40,7 @@ export const Loading: StoryObj<ButtonToastType> = {
                 }}
             />
         </div>
-    ),
+    )
 }
 
 export const Error: StoryObj<ButtonToastType> = {
@@ -55,5 +55,5 @@ export const Error: StoryObj<ButtonToastType> = {
                 }}
             />
         </div>
-    ),
+    )
 }

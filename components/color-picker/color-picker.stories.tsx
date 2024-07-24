@@ -6,9 +6,9 @@ type ColorPickerType = typeof ColorPicker
 
 export default {
     title: 'ColorPicker',
-    component: ColorPicker,
+    component: ColorPicker
 } satisfies Meta<ColorPickerType>
 
 export const Default: StoryObj<ColorPickerType> = {
-    render: () => <ColorPicker />,
+    render: () => <ColorPicker />
 }

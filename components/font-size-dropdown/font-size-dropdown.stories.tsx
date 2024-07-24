@@ -8,7 +8,7 @@ type FontSizeDropdownType = typeof FontSizeDropdown
 
 export default {
     title: 'FontSizeDropdown',
-    component: FontSizeDropdown,
+    component: FontSizeDropdown
 } satisfies Meta<FontSizeDropdownType>
 
 const FontSizeDropdownWithState = () => {
@@ -22,5 +22,5 @@ const FontSizeDropdownWithState = () => {
 }
 
 export const Default: StoryObj<FontSizeDropdownType> = {
-    render: () => <FontSizeDropdownWithState />,
+    render: () => <FontSizeDropdownWithState />
 }

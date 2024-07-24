@@ -6,9 +6,9 @@ type FormulaDropdownType = typeof FormulaDropdown
 
 export default {
     title: 'FormulaDropdown',
-    component: FormulaDropdown,
+    component: FormulaDropdown
 } satisfies Meta<FormulaDropdownType>
 
 export const Default: StoryObj<FormulaDropdownType> = {
-    render: () => <FormulaDropdown />,
+    render: () => <FormulaDropdown />
 }

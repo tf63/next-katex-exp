@@ -6,9 +6,9 @@ type FormulaInputType = typeof FormulaInput
 
 export default {
     title: 'FormulaInput',
-    component: FormulaInput,
+    component: FormulaInput
 } satisfies Meta<FormulaInputType>
 
 export const Default: StoryObj<FormulaInputType> = {
-    render: () => <FormulaInput />,
+    render: () => <FormulaInput />
 }

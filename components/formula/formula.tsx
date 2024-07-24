@@ -19,7 +19,7 @@ const FormulaContent = ({ formula, inline }: FormulaProps, ref: Ref<HTMLDivEleme
 
         katex.render(formula, formulaRef.current, {
             throwOnError: false,
-            displayMode: !inline,
+            displayMode: !inline
         })
     }, [formula, inline])
 

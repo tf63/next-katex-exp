@@ -6,9 +6,9 @@ type FontSizeSliderType = typeof FontSizeSlider
 
 export default {
     title: 'FontSizeSlider',
-    component: FontSizeSlider,
+    component: FontSizeSlider
 } satisfies Meta<FontSizeSliderType>
 
 export const Default: StoryObj<FontSizeSliderType> = {
-    render: () => <FontSizeSlider />,
+    render: () => <FontSizeSlider />
 }

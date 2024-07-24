@@ -6,9 +6,9 @@ type FormulaTemplateType = typeof FormulaTemplate
 
 export default {
     title: 'FormulaTemplate',
-    component: FormulaTemplate,
+    component: FormulaTemplate
 } satisfies Meta<FormulaTemplateType>
 
 export const Default: StoryObj<FormulaTemplateType> = {
-    render: () => <FormulaTemplate />,
+    render: () => <FormulaTemplate />
 }
