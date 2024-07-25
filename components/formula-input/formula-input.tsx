@@ -9,7 +9,6 @@ import { ColorPicker } from '@/components/color-picker'
 import { FontSizeDropdown } from '@/components/font-size-dropdown'
 import { Formula } from '@/components/formula'
 
-import 'react-color-palette/css'
 import { cn } from '@/lib/utils'
 
 type FormulaInputProps = {
