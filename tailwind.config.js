@@ -1,5 +1,3 @@
-const { emerald } = require('daisyui/src/theming/themes')
-
 const config = {
     content: [
         './pages/**/*.{js,ts,jsx,tsx,mdx}',

@@ -11,7 +11,10 @@ export const FontSizeDropdown = ({ fontSize, setFontSize }: FontSizeDropdownProp
     const { closeRef } = useCloseRef()
     return (
         <details className="dropdown dropdown-top" ref={closeRef}>
-            <summary className="btn min-w-[140px] font-semibold shadow-btn hover:border-transparent hover:bg-base-200">
+            <summary
+                className="btn min-w-[140px] font-semibold shadow-btn hover:border-transparent hover:bg-base-200"
+                tabIndex={-1}
+            >
                 FontSize {fontSize}
             </summary>
 
